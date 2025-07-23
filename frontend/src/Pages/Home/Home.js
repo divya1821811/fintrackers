@@ -138,9 +138,6 @@ const Home = () => {
   };
 
 
-  
-
-
   useEffect(() => {
 
     const fetchAllTransactions = async () => {
@@ -193,7 +190,7 @@ const Home = () => {
             <div className="filterRow">
               <div className="text-white">
                 <Form.Group className="mb-3" controlId="formSelectFrequency">
-                  <Form.Label>Select Frequency</Form.Label>
+                  <Form.Label>Select</Form.Label>
                   <Form.Select
                     name="frequency"
                     value={frequency}
@@ -240,7 +237,7 @@ const Home = () => {
               </div>
 
               <div>
-                <Button onClick={handleShow} className="addNew">
+                <Button onClick={handleShow} className="btn btn-success">
                   Add New
                 </Button>
                 <Button onClick={handleShow} className="mobileBtn">
@@ -384,7 +381,7 @@ const Home = () => {
             )}
 
             <div className="containerBtn">
-              <Button variant="primary" onClick={handleReset}>
+              <Button variant="btn btn-outline-success" onClick={handleReset}>
                 Reset Filter
               </Button>
             </div>

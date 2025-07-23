@@ -149,15 +149,22 @@ const Register = () => {
         }}
       />
 
-      <Container className="mt-5" style={{position: 'relative', zIndex: "2 !important", color:"white !important"}}>
+      <Container className="mt-3" style={{position: 'relative', zIndex: "2 !important"}}>
       <Row>
-        <h1 className="text-center">
-          <AccountBalanceWalletIcon sx={{ fontSize: 40, color: "white"}}  className="text-center" />
-        </h1>
-        <h1 className="text-center text-white">Welcome to Expense Management System</h1>
-        <Col md={{ span: 6, offset: 3 }}>
-          <h2 className="text-white text-center mt-5" >Registration</h2>
+      <Col md={{ span: 6, offset: 3 }}>
+        <h1 className="text-center mt-3">
+              <AccountBalanceWalletIcon
+                sx={{ fontSize: 40, color: "white" }}
+                className="text-center"
+              />
+            </h1>
+          
+          
+         
           <Form>
+          <h3 className="text-center text-black">Welcome to FinTrackers</h3>
+         
+          <h2 className="text-black text-center mt-3" >Registration</h2>
             <Form.Group controlId="formBasicName" className="mt-3" >
               <Form.Label className="text-white">Name</Form.Label>
               <Form.Control type="text"  name="name" placeholder="Full name" value={values.name} onChange={handleChange} />
@@ -176,14 +183,14 @@ const Register = () => {
 
               <Button
                   type="submit"
-                  className=" text-center mt-3 btnStyle"
+                  className=" btn btn-success"
                   onClick={!loading ? handleSubmit : null}
                   disabled={loading}
                 >
                   {loading ? "Registering..." : "Signup"}
                 </Button>
 
-              <p className="mt-3" style={{color: "#9d9494"}}>Already have an account? <Link to="/login" className="text-white lnk" >Login</Link></p>
+              <p className="mt-3" style={{color: "#000000"}}>Already have an account? <Link to="/login" className="text-white lnk" >Login</Link></p>
             </div>
           </Form>
         </Col>

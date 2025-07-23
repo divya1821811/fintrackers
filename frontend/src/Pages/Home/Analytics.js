@@ -1,13 +1,11 @@
 import React from "react";
-// import CardBox from "./CardBox";
-import { Container, Row } from "react-bootstrap";
+import { Container, Row, Button } from "react-bootstrap";
 import CircularProgressBar from "../../components/CircularProgressBar";
 import LineProgressBar from "../../components/LineProgressBar";
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
-// import MovingIcon from '@mui/icons-material/Moving';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-
+import * as XLSX from 'xlsx';  // Import xlsx library
 
 const Analytics = ({ transactions }) => {
   const TotalTransactions = transactions.length;
@@ -22,8 +20,6 @@ const Analytics = ({ transactions }) => {
     (totalIncomeTransactions.length / TotalTransactions) * 100;
   let totalExpensePercent =
     (totalExpenseTransactions.length / TotalTransactions) * 100;
-
-  // console.log(totalIncomePercent, totalExpensePercent);
 
   const totalTurnOver = transactions.reduce(
     (acc, transaction) => acc + transaction.amount,
@@ -64,8 +60,19 @@ const Analytics = ({ transactions }) => {
     "Transportation": '#1982C4',
     "Other": '#F45B69',
   };
-  
-  
+
+  // Function to export data to Excel
+  const exportToExcel = () => {
+    // Create a worksheet with the transactions data
+    const ws = XLSX.utils.json_to_sheet(transactions);
+
+    // Create a new workbook and append the worksheet
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Transactions");
+
+    // Export to Excel
+    XLSX.writeFile(wb, "Transactions.xlsx");
+  };
 
   return (
     <>
@@ -73,6 +80,7 @@ const Analytics = ({ transactions }) => {
         <Row>
           <div className="col-lg-3 col-md-6 mb-4">
             <div className="card h-100">
+  
               <div className="card-header bg-black text-white">
                 <span style={{ fontWeight: "bold" }}>Total Transactions:</span>{" "}
                 {TotalTransactions}
@@ -139,13 +147,10 @@ const Analytics = ({ transactions }) => {
                   
                   const incomePercent = (income/ totalTurnOver) * 100;
 
- 
-
                   return(
                     <>
                     {income > 0 &&
                       (<LineProgressBar label={category} percentage={incomePercent.toFixed(0)} lineColor={colors[category]} />)
-
                     }
                     </>
                   )
@@ -165,12 +170,10 @@ const Analytics = ({ transactions }) => {
                   
                   const expensePercent = (expenses/ totalTurnOver) * 100;
 
-
                   return(
                     <>
                     {expenses > 0 &&
                       (<LineProgressBar label={category} percentage={expensePercent.toFixed(0)} lineColor={colors[category]}/>)
-
                     }
                     </>
                   )
@@ -178,6 +181,13 @@ const Analytics = ({ transactions }) => {
               </div>
             </div>
           </div>
+        </Row>
+
+        {/* Add Export Button */}
+        <Row className="justify-content-center mt-4">
+          <Button onClick={exportToExcel} variant="secondary">
+            Export to Excel
+          </Button>
         </Row>
       </Container>
     </>

@@ -7,7 +7,7 @@ const LineProgressBar = ({ label, percentage, lineColor }) => {
         <span>{label}</span>
         <span>{percentage}%</span>
       </div>
-      <div className="progress" style={{ height: '24px' }}>
+      <div className="progress" style={{ height: '26px' }}>
         <div
           className="progress-bar"
           role="progressbar"

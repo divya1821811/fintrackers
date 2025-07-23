@@ -25,10 +25,7 @@ const ModelForm = ({transaction, onClose, isShow}) => {
 
   const handleClose = () => {setShow(false)};
 
-  // const handleShow = (index) => {
-  //   setShow(true)
-  // };
-
+  
   return (
     <div>
       <Modal show={isShow} onHide={handleClose} centered>

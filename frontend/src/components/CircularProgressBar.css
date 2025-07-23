@@ -1,8 +1,11 @@
+
 .circular-progressbar {
     display: inline-block;
     position: relative;
     width: 100px;
     height: 100px;
+    
+  
   }
 
   @keyframes progressAnimation {
@@ -22,14 +25,17 @@
     transform-origin: 50% 50%;
     transform: rotate(-90deg);
     transition: stroke-dashoffset 2s linear;
+    
   }
 
   .circular-progressbar .circle.animating {
     animation: progressAnimation 3s linear forwards;
+    
   }
   
   .circular-progressbar .bg {
-    stroke: #d3d3d3;
+    stroke: #f7f2f7;
+    
   }
   
   .circular-progressbar .percentage {

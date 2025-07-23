@@ -9,7 +9,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { loginAPI } from "../../utils/ApiRequest";
-
 const Login = () => {
   const navigate = useNavigate();
 
@@ -49,6 +48,7 @@ const Login = () => {
     setLoading(true);
 
     const { data } = await axios.post(loginAPI, {
+      
       email,
       password,
     });
@@ -64,98 +64,27 @@ const Login = () => {
     }
   };
 
-  const particlesInit = useCallback(async (engine) => {
-    // console.log(engine);
-    await loadFull(engine);
-  }, []);
-
-  const particlesLoaded = useCallback(async (container) => {
-    // await console.log(container);
-  }, []);
+ 
 
   return (
-    <div style={{ position: "relative", overflow: "hidden" }}>
-      <Particles
-        id="tsparticles"
-        init={particlesInit}
-        loaded={particlesLoaded}
-        options={{
-          background: {
-            color: {
-              value: "#000",
-            },
-          },
-          fpsLimit: 60,
-          particles: {
-            number: {
-              value: 200,
-              density: {
-                enable: true,
-                value_area: 800,
-              },
-            },
-            color: {
-              value: "#ffcc00",
-            },
-            shape: {
-              type: "circle",
-            },
-            opacity: {
-              value: 0.5,
-              random: true,
-            },
-            size: {
-              value: 3,
-              random: { enable: true, minimumValue: 1 },
-            },
-            links: {
-              enable: false,
-            },
-            move: {
-              enable: true,
-              speed: 2,
-            },
-            life: {
-              duration: {
-                sync: false,
-                value: 3,
-              },
-              count: 0,
-              delay: {
-                random: {
-                  enable: true,
-                  minimumValue: 0.5,
-                },
-                value: 1,
-              },
-            },
-          },
-          detectRetina: true,
-        }}
-        style={{
-          position: "absolute",
-          zIndex: -1,
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-        }}
-      />
+    
+     
+
       <Container
         className="mt-5"
-        style={{ position: "relative", zIndex: "2 !important" }}
-      >
+        style={{ position: "relative", zIndex: "2 !important" }} >
         <Row>
           <Col md={{ span: 6, offset: 3 }}>
-            <h1 className="text-center mt-5">
+            <h1 className="text-center mt-3">
               <AccountBalanceWalletIcon
                 sx={{ fontSize: 40, color: "white" }}
                 className="text-center"
               />
             </h1>
-            <h2 className="text-white text-center ">Login</h2>
+           
             <Form>
-              <Form.Group controlId="formBasicEmail" className="mt-3">
+            <h2 className="text-black text-center">Login</h2>
+              <Form.Group controlId="formBasicEmail" className="mt-3 form">
                 <Form.Label className="text-white">Email address</Form.Label>
                 <Form.Control
                   type="email"
@@ -183,6 +112,7 @@ const Login = () => {
                   alignItems: "center",
                   justifyContent: "center",
                   flexDirection: "column",
+                  color:"black",
                 }}
                 className="mt-4"
               >
@@ -192,14 +122,14 @@ const Login = () => {
 
                 <Button
                   type="submit"
-                  className=" text-center mt-3 btnStyle"
+                  className=" btn btn-success"
                   onClick={!loading ? handleSubmit : null}
                   disabled={loading}
                 >
                   {loading ? "Signin…" : "Login"}
                 </Button>
 
-                <p className="mt-3" style={{ color: "#9d9494" }}>
+                <p className="mt-3" style={{ color: "#000000" }}>
                   Don't Have an Account?{" "}
                   <Link to="/register" className="text-white lnk">
                     Register
@@ -211,7 +141,7 @@ const Login = () => {
         </Row>
         <ToastContainer />
       </Container>
-    </div>
+   
   );
 };
 

@@ -2,9 +2,24 @@
     text-decoration: none;
 }
 .btnStyle{
-    background-color: red;
-    border: 2px solid red;
+    background-color: rgb(64, 255, 0);
+    border: 2px solid rgb(19, 69, 19);
 }
 .btnStyle:hover{
-    background-color: rgb(75, 11, 11);
+    background-color: rgb(51, 174, 35);
 }
+Form{
+   
+    background-color: rgb(85, 182, 211)
+    
+}
+.container{
+    border:5px;
+    padding:10px;
+    border-color: 5px solid black;
+}
+h2
+{
+    font-family:fantasy;
+}
+ 

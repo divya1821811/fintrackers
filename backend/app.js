@@ -17,8 +17,10 @@ const port = process.env.PORT;
 connectDB();
 
 const allowedOrigins = [
+  "http://localhost:3000",
+  "http://localhost:3001",
   "https://main.d1sj7cd70hlter.amplifyapp.com",
-  "https://expense-tracker-app-three-beryl.vercel.app",
+  "https://expense-tracker-app-three-beryl.vercel.app"
   // add more origins as needed
 ];
 
@@ -26,9 +28,16 @@ const allowedOrigins = [
 app.use(express.json());
 app.use(
   cors({
-    origin: allowedOrigins,
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: (origin, callback) => {
+      // Allow requests from the frontend and no origin (e.g., Postman)
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true); // Allow the request
+      } else {
+        callback(new Error("Not allowed by CORS")); // Block the request from unauthorized origins
+      }
+    },
+    credentials: true, // Allow cookies or other credentials to be sent with the request
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
   })
 );
 app.use(helmet());
